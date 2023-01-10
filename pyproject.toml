@@ -1,0 +1,11 @@
+[tool.poetry]
+name = "dsl_summary"
+version = "0.1.0"
+description = ""
+authors = ["Data Science Lab"]
+
+[tool.poetry.dependencies]
+python = ">=3.8.8,<3.11"
+pandas = "^1.5.2"
+requests = "^2.28.1"
+youtube_dl = "^2021.12.17"

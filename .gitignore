@@ -1,0 +1,8 @@
+#mp3 files
+*.mp3
+
+#Poetry lock
+*.lock
+
+#pycache
+*.pyc

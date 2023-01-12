@@ -1,27 +1,31 @@
+import sys
 from pprint import pprint
 from time import sleep
 
-import requests
-import youtube_dl
-
-from config import api_key
-from utils import download_youtube_vide, upload_audiofile_to_assemblyai
-
-url = "https://www.youtube.com/watch?v=Lpp9bHtPAN0"
-
-audio_file = download_youtube_vide(url)
-
-audio_file = 'Lpp9bHtPAN0.mp3'
 import whisper
+from transformers import pipeline
+
+from utils import download_youtube_vide
+
+url = "https://www.youtube.com/watch?v=Lpp9bHtPAN0" #Url of the video you want to summarize
+#def video_sum(url):
+audio_file = download_youtube_vide(url) #Download and convert your file to mp3
+
+
 
 model = whisper.load_model("base")
 result = model.transcribe(audio_file)
-print(result["text"])
+#print(result["text"])
 
 
-from transformers import pipeline
+
 
 summarizer = pipeline("summarization", model="facebook/bart-large-cnn", tokenizer="facebook/bart-large-cnn", truncation=True)
 print(summarizer(result["text"], max_length=1024, min_length=50, do_sample=False))
 
+""" if __name__ == '__main__':
+    url = sys.argv[1]
+    video_sum(url) """
+#    "https://www.youtube.com/watch?v=Lpp9bHtPAN0"
 
+    

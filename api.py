@@ -15,10 +15,10 @@ def home_page():
 def process_text(url):   
     # Run a function with the text as an argument
     url = unquote(url)
-    summary = get_summary(url)
+    summary, full_text = get_summary(url)
     
     # Return the result as a JSON object
-    return jsonify({'summary': summary})
+    return jsonify({'summary': summary, 'full_text': full_text})
 
 if __name__ == '__main__':
     app.run(debug=True)

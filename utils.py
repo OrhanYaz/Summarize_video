@@ -1,4 +1,5 @@
 import json
+import os
 import sys
 from pprint import pprint
 from time import sleep
@@ -16,7 +17,7 @@ def download_youtube_vide(url):
         'preferredcodec': 'mp3',
         'preferredquality': '192',
     }],
-    'outtmpl': '%(id)s.%(ext)s',
+    'outtmpl': './audio/%(id)s.%(ext)s',
     }
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         audio_file = ydl.extract_info(url, download=False).get("id", None)
@@ -33,11 +34,12 @@ def get_summary(url):
     audio_file = download_youtube_vide(url) #Download and convert your file to mp3
 
 
-
+    audio_path = './audio/'+ audio_file
     model = whisper.load_model("base")
-    result = model.transcribe(audio_file)
+    result = model.transcribe(audio_path)
+    os.remove(audio_path) #deleteing audio file as it might not be legal
     #print(result["text"])
 
     summarizer = pipeline("summarization", model="facebook/bart-large-cnn", tokenizer="facebook/bart-large-cnn", truncation=True)
     summary = summarizer(result["text"], max_length=1024, min_length=50, do_sample=False)
-    return summary[0]['summary_text']
+    return summary[0]['summary_text'], result["text"]

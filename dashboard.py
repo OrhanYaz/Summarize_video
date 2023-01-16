@@ -26,6 +26,9 @@ def main():
     if st.button("Submit"):
         st.success("Here is your summary: {}".format(get_api_output(text)))
 
+    if st.button("Click here to display the full transcribe"):
+        st.write()
+
 
 if __name__ == '__main__':
     main()

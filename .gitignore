@@ -6,3 +6,6 @@
 
 #pycache
 *.pyc
+
+#Dockerfile
+Dockerfile

@@ -1,4 +1,4 @@
-Here is a litle personnal project i built to summarize youtube videos
+Here is a little personnal project i built to summarize youtube videos
 
 It uses yt-dlp package to download youtube video as mp3 (only need audio for next step).
 Then it uses Whisper from openAI as speech-to-text framework to convert audio file into text.

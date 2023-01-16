@@ -5,7 +5,7 @@ from time import sleep
 import whisper
 from transformers import pipeline
 
-from utils import download_youtube_vide
+from utils import download_youtube_vide, get_summary
 
 url = "https://www.youtube.com/watch?v=Lpp9bHtPAN0" #Url of the video you want to summarize
 #def video_sum(url):
@@ -29,3 +29,5 @@ print(summarizer(result["text"], max_length=1024, min_length=50, do_sample=False
 #    "https://www.youtube.com/watch?v=Lpp9bHtPAN0"
 
     
+
+test1, test2 = get_summary(url)

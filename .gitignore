@@ -1,5 +1,5 @@
 #mp3 files
-*.mp3
+#*.mp3
 
 #Poetry lock
 *.lock
@@ -9,3 +9,4 @@
 
 #Dockerfile
 Dockerfile
+.dockerignore

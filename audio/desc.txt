@@ -1,0 +1,1 @@
+This is a folder that contains temporary audio file which are deleted after the transcribe completed
